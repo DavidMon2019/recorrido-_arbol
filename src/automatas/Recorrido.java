@@ -23,6 +23,7 @@ public class Recorrido extends javax.swing.JFrame {
      * Creates new form Recorrido
      */
     ArrayList<Integer> coleccion;
+    Nodo nodo;
 
     public Recorrido() {
         initComponents();
@@ -855,8 +856,19 @@ public class Recorrido extends javax.swing.JFrame {
         return valor;
     }
 
+    private String recorrido(ArrayList<Integer> it, String msg) {
+        int i = 0;
+        String r = msg + "\n";
+        while (i < it.size()) {
+            r += "\t" + it.get(i) + "";
+            i++;
+        }
+        return (r);
+    }
+
     public void ejecPreOrder() {
         Arbol nArbol = new Arbol();
+        ArrayList<Integer> valRec;
         coleccion = new ArrayList<>();
         coleccion.add(valEntero(ValNull(JT1)));
         coleccion.add(valEntero(ValNull(JT2)));
@@ -895,13 +907,14 @@ public class Recorrido extends javax.swing.JFrame {
             if (coleccion.get(i) != 0) {
                 nArbol.insertar(coleccion.get(i));
             }
-            System.out.println("dato en la coleccion " + coleccion.get(i));
+            
         }
-        for (int j = 0; j < coleccion.size(); j++) {
-            if (!nArbol.vacio()) {
-                nArbol.inOrder(nArbol.getRaiz());
 
-            }
+        if (!nArbol.vacio()) {
+            valRec = nArbol.InOrder();
+            String rec = recorrido(valRec, "In order");
+            System.out.println(rec);
+
         }
 
     }

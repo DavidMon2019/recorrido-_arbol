@@ -1,5 +1,7 @@
 package automatas;
 
+import java.util.ArrayList;
+
 public class Arbol {
 
     private Nodo raiz;
@@ -8,24 +10,32 @@ public class Arbol {
         raiz = null;
     }
 
-    public void insertar(int dato) {
+    public boolean insertar(Integer dato) {
+        return (agregar(dato));
+    }
+
+    public boolean agregar(Integer dato) {
         Nodo nuevo = new Nodo(dato);
+        ingresarNodo(nuevo, raiz);
+        return true;
+    }
+
+    public void ingresarNodo(Nodo nuevo, Nodo aux) {
+
         if (raiz == null) {
             raiz = nuevo;
         } else {
-            Nodo aux = raiz;
-            Nodo padre = aux;
             if (nuevo.getElemento() <= aux.getElemento()) {
                 if (aux.getIzquierda() == null) {
-                    padre.setIzquierda(nuevo);
-                } else {
                     aux.setIzquierda(nuevo);
+                } else {
+                    ingresarNodo(nuevo, aux.getIzquierda());
                 }
             } else {
                 if (aux.getDerecha() == null) {
-                    padre.setDerecha(nuevo);
-                } else {
                     aux.setDerecha(nuevo);
+                } else {
+                    ingresarNodo(nuevo, aux.getDerecha());
                 }
 
             }
@@ -37,11 +47,17 @@ public class Arbol {
 
     }
 
-    public void inOrder(Nodo nodo) {
+    public ArrayList<Integer> InOrder() {
+        ArrayList<Integer> val = new ArrayList<>();
+        fun_inorder(raiz, val);
+        return val;
+    }
+
+    public void fun_inorder(Nodo nodo, ArrayList<Integer> rec) {
         if (nodo != null) {
-            inOrder(nodo.getIzquierda());
-            System.out.println(nodo.getElemento());
-            inOrder(nodo.getDerecha());
+            fun_inorder(nodo.getIzquierda(), rec);
+            rec.add(nodo.getElemento());
+            fun_inorder(nodo.getDerecha(), rec);
         }
     }
 

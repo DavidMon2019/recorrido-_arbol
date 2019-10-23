@@ -10,6 +10,9 @@ public class Nodo {
         this.derecha = null;
         this.izquierda = null;
     }
+    
+   
+
 
     public int getElemento() {
         return elemento;
