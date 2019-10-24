@@ -3,35 +3,39 @@ package arbol_modelo;
 import java.util.ArrayList;
 
 public class Arbol {
-
+    //objeto del nodo
     private Nodo raiz;
 
     public Arbol() {
         raiz = null;
     }
+
     //agrega los valores de los nodos
     public boolean agregar(Integer dato) {
         Nodo nuevo = new Nodo(dato);
-        ingresarNodo(nuevo, raiz);
+        ordenarNodos(nuevo, raiz);
         return true;
     }
 
-    public void ingresarNodo(Nodo nuevo, Nodo aux) {
-
+//ordena los nodos segun el valor de la raiz
+    public void ordenarNodos(Nodo nuevo, Nodo raiz) {
+//si la raiz esta vacia le asigna el primer valor
         if (raiz == null) {
             raiz = nuevo;
         } else {
-            if (nuevo.getElemento() <= aux.getElemento()) {
-                if (aux.getIzquierda() == null) {
-                    aux.setIzquierda(nuevo);
+//si el valor nuevo es menor o igual a la raiz se asigna a la izquierda
+            if (nuevo.getElemento() <= raiz.getElemento()) {
+                if (raiz.getIzquierda() == null) {
+                    raiz.setIzquierda(nuevo);
                 } else {
-                    ingresarNodo(nuevo, aux.getIzquierda());
+                    ordenarNodos(nuevo, raiz.getIzquierda());
                 }
+//si es mayor se le asigna a la derecha                
             } else {
-                if (aux.getDerecha() == null) {
-                    aux.setDerecha(nuevo);
+                if (raiz.getDerecha() == null) {
+                    raiz.setDerecha(nuevo);
                 } else {
-                    ingresarNodo(nuevo, aux.getDerecha());
+                    ordenarNodos(nuevo, raiz.getDerecha());
                 }
 
             }
@@ -43,27 +47,37 @@ public class Arbol {
 
     }
 
+    /*
+    -- carga la raiz al metodo principal InOrder y el Array para almacenar el recorrido
+    -- retorna el Array del recorrido
+     */
     public ArrayList<Integer> InOrder() {
         ArrayList<Integer> val = new ArrayList<>();
         fun_inorder(raiz, val);
         return val;
     }
 
+    /*
+    -- carga la raiz al metodo principal PreOrder y el Array para almacenar el recorrido
+    -- retorna el Array del recorrido
+     */
     public ArrayList<Integer> PreOrder() {
         ArrayList<Integer> val = new ArrayList<>();
         fun_preorder(raiz, val);
         return val;
     }
+
     /*
-    -- carga la raiz al metodo principal y el Array para almacenar el recorrido
+    -- carga la raiz al metodo principal PostOrder y el Array para almacenar el recorrido
     -- retorna el Array del recorrido
-    */
+     */
     public ArrayList<Integer> PostOrder() {
         ArrayList<Integer> val = new ArrayList<>();
         fun_postorder(raiz, val);
         return val;
     }
 
+    //funcion peincipal In Order
     public void fun_inorder(Nodo nodo, ArrayList<Integer> rec) {
         if (nodo != null) {
             fun_inorder(nodo.getIzquierda(), rec);
@@ -72,6 +86,7 @@ public class Arbol {
         }
     }
 
+    //funcion principal Pre Order
     public void fun_preorder(Nodo nodo, ArrayList<Integer> rec) {
         if (nodo != null) {
             rec.add(nodo.getElemento());
@@ -79,14 +94,15 @@ public class Arbol {
             fun_preorder(nodo.getDerecha(), rec);
         }
     }
+
     //funcion principal Post Order
     public void fun_postorder(Nodo nodo, ArrayList<Integer> rec) {
         if (nodo != null) {
             fun_postorder(nodo.getIzquierda(), rec);
             fun_postorder(nodo.getDerecha(), rec);
             rec.add(nodo.getElemento());
-        }else{
-            rec.add(0);
+        } else {
+            rec.add(-1);
         }
     }
 

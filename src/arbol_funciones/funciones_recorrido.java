@@ -8,11 +8,12 @@ public class funciones_recorrido {
 
     ArrayList<Integer> valRec;
     ArrayList<Integer> coleccion;
-    funciones_archivos funArc;
+    funciones_archivos funArc;//objeto funcion de archivos
 
     public funciones_recorrido() {
     }
 
+    //compurueba si el JtextFiel no esta vacio
     public String ValNull(JTextField text) {
 
         if (text.getText().length() == 0) {
@@ -32,6 +33,7 @@ public class funciones_recorrido {
         return valor;
     }
 
+    // devuelve el recoorido de forma ordenada
     public String recorrido(ArrayList<Integer> it, String msg) {
         int i = 0;
         String r = msg + "\n";
@@ -43,6 +45,7 @@ public class funciones_recorrido {
         return (r);
     }
 
+    //carga los valores de los JtextFields
     public void cargarArray(Arbol nArbol,
             JTextField JT1, JTextField JT10, JTextField JT11, JTextField JT12,
             JTextField JT13, JTextField JT14, JTextField JT15, JTextField JT16,
@@ -54,6 +57,7 @@ public class funciones_recorrido {
             JTextField JT7, JTextField JT8, JTextField JT9) {
 
         coleccion = new ArrayList<>();
+        //se ingresan los valores a la coleccion
         coleccion.add(valEntero(ValNull(JT1)));
         coleccion.add(valEntero(ValNull(JT2)));
         coleccion.add(valEntero(ValNull(JT3)));
@@ -87,42 +91,48 @@ public class funciones_recorrido {
         coleccion.add(valEntero(ValNull(JT31)));
 
         for (int i = 0; i < coleccion.size(); i++) {
-
+            //si la coleccion no esta vacia se agrega el nodo
             if (coleccion.get(i) != 0) {
                 nArbol.agregar(coleccion.get(i));
             }
         }
     }
 
+    //metodo para la ejecucion de inOrder
     public void ejecInOrder(Arbol nArbol) {
 
         if (!nArbol.vacio()) {
             valRec = nArbol.InOrder();
             String rec = recorrido(valRec, "In order");
             System.out.println(rec);
+            //llama el metodo guardar archivo
+            funArc.guardarArch("In_Order", rec, nArbol.getRaiz().getElemento());
 
         }
 
     }
-
+//metodo de ejecucion de preOrder
     public void ejecPreOrder(Arbol nArbol) {
 
         if (!nArbol.vacio()) {
             valRec = nArbol.PreOrder();
             String rec = recorrido(valRec, "Pre order");
             System.out.println(rec);
+            //llama el metodo guardar archivo
+            funArc.guardarArch("Pre_Order", rec, nArbol.getRaiz().getElemento());
 
         }
     }
-
+//metodo de ejecucion de postOrder
     public void ejecPostOrder(Arbol nArbol) {
         funArc = new funciones_archivos();
         if (!nArbol.vacio()) {
             valRec = nArbol.PostOrder();
             String rec = recorrido(valRec, "Post order");
-            System.out.println(rec.replace("0", " "));
-            funArc.guardarArch("Post_Order", rec,nArbol.getRaiz().getElemento());
-            
+            System.out.println(rec.replace("-1,", " "));
+            //llama el metodo guardar archivo
+            funArc.guardarArch("Post_Order", rec, nArbol.getRaiz().getElemento());
+
         } else {
             System.out.println("Arbol vacio");
         }

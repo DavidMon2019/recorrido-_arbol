@@ -35,10 +35,11 @@ public class Recorrido extends javax.swing.JFrame {
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
     }
-
+    //ejecuta el metodo cargarArray de funciones de recorridos
     public void cargar() {
         funRec = new funciones_recorrido();
         nArbol = new Arbol();
+       //carga los JtextField
         funRec.cargarArray(nArbol,JT1, JT10, JT11, JT12, JT13, JT14, JT15, JT16, JT17, JT18, JT19, JT2, JT20, JT21, JT22, JT23, JT24, JT25, JT26, JT27, JT28, JT29, JT3, JT30, JT31, JT4, JT5, JT6, JT7, JT8, JT9);
     }
 
@@ -739,6 +740,7 @@ public class Recorrido extends javax.swing.JFrame {
     }//GEN-LAST:event_JT27ActionPerformed
 
     private void jB3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB3ActionPerformed
+        //boton pre Order
         funRec = new funciones_recorrido();
         nArbol = new Arbol();
         cargar();
@@ -746,16 +748,17 @@ public class Recorrido extends javax.swing.JFrame {
     }//GEN-LAST:event_jB3ActionPerformed
 
     private void jB4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB4ActionPerformed
-        // TODO add your handling code here:
+        // boton in Order
         funRec = new funciones_recorrido();
         nArbol = new Arbol();
+        
         cargar();
         funRec.ejecInOrder(nArbol);
         
     }//GEN-LAST:event_jB4ActionPerformed
 
     private void jB5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB5ActionPerformed
-        // TODO add your handling code here:
+        // boton Post Order
         funRec = new funciones_recorrido();
         nArbol = new Arbol();
         cargar();
