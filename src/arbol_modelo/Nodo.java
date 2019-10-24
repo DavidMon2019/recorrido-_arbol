@@ -1,4 +1,4 @@
-package automatas;
+package arbol_modelo;
 
 public class Nodo {
 
@@ -10,10 +10,7 @@ public class Nodo {
         this.derecha = null;
         this.izquierda = null;
     }
-    
    
-
-
     public int getElemento() {
         return elemento;
     }

@@ -3,8 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package automatas;
+package arbol_principal;
 
+import arbol_funciones.funciones_recorrido;
+import arbol_modelo.Nodo;
+import arbol_modelo.Arbol;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
@@ -22,11 +25,19 @@ public class Recorrido extends javax.swing.JFrame {
     /**
      * Creates new form Recorrido
      */
-    ArrayList<Integer> coleccion;
+    funciones_recorrido funRec;
+
     Nodo nodo;
+    Arbol nArbol;
 
     public Recorrido() {
         initComponents();
+    }
+
+    public void cargar() {
+        funRec = new funciones_recorrido();
+        nArbol = new Arbol();
+        funRec.cargarArray(nArbol,JT1, JT10, JT11, JT12, JT13, JT14, JT15, JT16, JT17, JT18, JT19, JT2, JT20, JT21, JT22, JT23, JT24, JT25, JT26, JT27, JT28, JT29, JT3, JT30, JT31, JT4, JT5, JT6, JT7, JT8, JT9);
     }
 
     /**
@@ -428,6 +439,20 @@ public class Recorrido extends javax.swing.JFrame {
             }
         });
 
+        jB4.setText("In Order");
+        jB4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB4ActionPerformed(evt);
+            }
+        });
+
+        jB5.setText("Post Order");
+        jB5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jB5ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout JTPanelLayout = new javax.swing.GroupLayout(JTPanel);
         JTPanel.setLayout(JTPanelLayout);
         JTPanelLayout.setHorizontalGroup(
@@ -454,22 +479,12 @@ public class Recorrido extends javax.swing.JFrame {
                         .addGap(656, 656, 656)
                         .addComponent(JT1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(JTPanelLayout.createSequentialGroup()
-                        .addGap(130, 130, 130)
-                        .addComponent(JT8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124)
-                        .addComponent(JT9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(117, 117, 117)
-                        .addComponent(JT10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124)
-                        .addComponent(JT11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(117, 117, 117)
-                        .addComponent(JT12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124)
-                        .addComponent(JT13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(117, 117, 117)
-                        .addComponent(JT14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(124, 124, 124)
-                        .addComponent(JT15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(66, 66, 66)
+                        .addComponent(jB3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jB4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jB5))
                     .addGroup(JTPanelLayout.createSequentialGroup()
                         .addGap(94, 94, 94)
                         .addComponent(JT16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -504,8 +519,22 @@ public class Recorrido extends javax.swing.JFrame {
                         .addGap(51, 51, 51)
                         .addComponent(JT31, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(JTPanelLayout.createSequentialGroup()
-                        .addGap(66, 66, 66)
-                        .addComponent(jB3)))
+                        .addGap(130, 130, 130)
+                        .addComponent(JT8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124)
+                        .addComponent(JT9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117)
+                        .addComponent(JT10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124)
+                        .addComponent(JT11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117)
+                        .addComponent(JT12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124)
+                        .addComponent(JT13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(117, 117, 117)
+                        .addComponent(JT14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(124, 124, 124)
+                        .addComponent(JT15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(142, Short.MAX_VALUE))
         );
         JTPanelLayout.setVerticalGroup(
@@ -556,13 +585,12 @@ public class Recorrido extends javax.swing.JFrame {
                         .addComponent(JT16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(JT17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(29, 29, 29)
-                .addComponent(jB3)
+                .addGroup(JTPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jB3)
+                    .addComponent(jB4)
+                    .addComponent(jB5))
                 .addContainerGap(44, Short.MAX_VALUE))
         );
-
-        jB4.setText("In Order");
-
-        jB5.setText("Post Order");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -571,23 +599,13 @@ public class Recorrido extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(JTPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jB4)
-                    .addComponent(jB5))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(162, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(JTPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(198, 198, 198)
-                .addComponent(jB4)
-                .addGap(55, 55, 55)
-                .addComponent(jB5)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -719,8 +737,27 @@ public class Recorrido extends javax.swing.JFrame {
     }//GEN-LAST:event_JT27ActionPerformed
 
     private void jB3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB3ActionPerformed
-        ejecPreOrder();
+        funRec = new funciones_recorrido();
+        nArbol = new Arbol();
+        cargar();
+        funRec.ejecPreOrder(nArbol);
     }//GEN-LAST:event_jB3ActionPerformed
+
+    private void jB4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB4ActionPerformed
+        // TODO add your handling code here:
+        funRec = new funciones_recorrido();
+        nArbol = new Arbol();
+        cargar();
+        funRec.ejecInOrder(nArbol);
+    }//GEN-LAST:event_jB4ActionPerformed
+
+    private void jB5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB5ActionPerformed
+        // TODO add your handling code here:
+        funRec = new funciones_recorrido();
+        nArbol = new Arbol();
+        cargar();
+        funRec.ejecPostOrder(nArbol);
+    }//GEN-LAST:event_jB5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -837,87 +874,6 @@ public class Recorrido extends javax.swing.JFrame {
        comprueba los valor Jtext  para saber si
     son vacio y sino le agrega -1
      */
-    public String ValNull(JTextField text) {
-
-        if (text.getText().length() == 0) {
-            text.setText("0");
-        } else {
-
-            text.getText();
-        }
-
-        return text.getText();
-    }
-
-    /*Convierte los valores de Jtext a Integer*/
-    public Integer valEntero(String text) {
-        int valor = 0;
-        valor = Integer.parseInt(text);
-        return valor;
-    }
-
-    private String recorrido(ArrayList<Integer> it, String msg) {
-        int i = 0;
-        String r = msg + "\n";
-        while (i < it.size()) {
-            r += "\t" + it.get(i) + "";
-            i++;
-        }
-        return (r);
-    }
-
-    public void ejecPreOrder() {
-        Arbol nArbol = new Arbol();
-        ArrayList<Integer> valRec;
-        coleccion = new ArrayList<>();
-        coleccion.add(valEntero(ValNull(JT1)));
-        coleccion.add(valEntero(ValNull(JT2)));
-        coleccion.add(valEntero(ValNull(JT3)));
-        coleccion.add(valEntero(ValNull(JT4)));
-        coleccion.add(valEntero(ValNull(JT5)));
-        coleccion.add(valEntero(ValNull(JT6)));
-        coleccion.add(valEntero(ValNull(JT7)));
-        coleccion.add(valEntero(ValNull(JT8)));
-        coleccion.add(valEntero(ValNull(JT9)));
-        coleccion.add(valEntero(ValNull(JT10)));
-        coleccion.add(valEntero(ValNull(JT11)));
-        coleccion.add(valEntero(ValNull(JT12)));
-        coleccion.add(valEntero(ValNull(JT13)));
-        coleccion.add(valEntero(ValNull(JT14)));
-        coleccion.add(valEntero(ValNull(JT15)));
-        coleccion.add(valEntero(ValNull(JT16)));
-        coleccion.add(valEntero(ValNull(JT17)));
-        coleccion.add(valEntero(ValNull(JT18)));
-        coleccion.add(valEntero(ValNull(JT19)));
-        coleccion.add(valEntero(ValNull(JT20)));
-        coleccion.add(valEntero(ValNull(JT21)));
-        coleccion.add(valEntero(ValNull(JT22)));
-        coleccion.add(valEntero(ValNull(JT23)));
-        coleccion.add(valEntero(ValNull(JT24)));
-        coleccion.add(valEntero(ValNull(JT25)));
-        coleccion.add(valEntero(ValNull(JT26)));
-        coleccion.add(valEntero(ValNull(JT27)));
-        coleccion.add(valEntero(ValNull(JT28)));
-        coleccion.add(valEntero(ValNull(JT29)));
-        coleccion.add(valEntero(ValNull(JT30)));
-        coleccion.add(valEntero(ValNull(JT31)));
-
-        for (int i = 0; i < coleccion.size(); i++) {
-
-            if (coleccion.get(i) != 0) {
-                nArbol.insertar(coleccion.get(i));
-            }
-            
-        }
-
-        if (!nArbol.vacio()) {
-            valRec = nArbol.InOrder();
-            String rec = recorrido(valRec, "In order");
-            System.out.println(rec);
-
-        }
-
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JT1;

@@ -1,4 +1,4 @@
-package automatas;
+package arbol_modelo;
 
 import java.util.ArrayList;
 
@@ -8,10 +8,6 @@ public class Arbol {
 
     public Arbol() {
         raiz = null;
-    }
-
-    public boolean insertar(Integer dato) {
-        return (agregar(dato));
     }
 
     public boolean agregar(Integer dato) {
@@ -53,6 +49,18 @@ public class Arbol {
         return val;
     }
 
+    public ArrayList<Integer> PreOrder() {
+        ArrayList<Integer> val = new ArrayList<>();
+        fun_preorder(raiz, val);
+        return val;
+    }
+
+    public ArrayList<Integer> PostOrder() {
+        ArrayList<Integer> val = new ArrayList<>();
+        fun_postorder(raiz, val);
+        return val;
+    }
+
     public void fun_inorder(Nodo nodo, ArrayList<Integer> rec) {
         if (nodo != null) {
             fun_inorder(nodo.getIzquierda(), rec);
@@ -61,11 +69,18 @@ public class Arbol {
         }
     }
 
-    public void preOrder(Nodo nodo) {
+    public void fun_preorder(Nodo nodo, ArrayList<Integer> rec) {
         if (nodo != null) {
-            System.out.println(nodo.getElemento());
-            preOrder(nodo.getIzquierda());
-            preOrder(nodo.getDerecha());
+            rec.add(nodo.getElemento());
+            fun_preorder(nodo.getIzquierda(), rec);
+            fun_preorder(nodo.getDerecha(), rec);
+        }
+    }
+    public void fun_postorder(Nodo nodo, ArrayList<Integer> rec) {
+        if (nodo != null) {
+            fun_postorder(nodo.getIzquierda(), rec);
+            fun_postorder(nodo.getDerecha(), rec);
+            rec.add(nodo.getElemento());
         }
     }
 
