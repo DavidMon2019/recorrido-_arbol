@@ -1,5 +1,3 @@
 test
 build/
-src/recorridos_archivos/Post_Order.txt
-src/recorridos_archivos/Pre_Order.txt
-src/recorridos_archivos/In_Order.txt
+*.txt
