@@ -20,8 +20,8 @@ public class Arbol {
 //ordena los nodos segun el valor de la raiz
     public void ordenarNodos(Nodo nuevo, Nodo raiz) {
 //si la raiz esta vacia le asigna el primer valor
-        if (raiz == null) {
-            raiz = nuevo;
+        if (this.raiz == null) {
+            this.raiz = nuevo;
         } else {
 //si el valor nuevo es menor o igual a la raiz se asigna a la izquierda
             if (nuevo.getElemento() <= raiz.getElemento()) {

@@ -751,7 +751,6 @@ public class Recorrido extends javax.swing.JFrame {
         // boton in Order
         funRec = new funciones_recorrido();
         nArbol = new Arbol();
-        
         cargar();
         funRec.ejecInOrder(nArbol);
         
@@ -762,7 +761,6 @@ public class Recorrido extends javax.swing.JFrame {
         funRec = new funciones_recorrido();
         nArbol = new Arbol();
         cargar();
-        
         funRec.ejecPostOrder(nArbol);
         
     }//GEN-LAST:event_jB5ActionPerformed

@@ -9,6 +9,7 @@ public class funciones_recorrido {
     ArrayList<Integer> valRec;
     ArrayList<Integer> coleccion;
     funciones_archivos funArc;//objeto funcion de archivos
+    Arbol nArbol;
 
     public funciones_recorrido() {
     }
@@ -100,20 +101,20 @@ public class funciones_recorrido {
 
     //metodo para la ejecucion de inOrder
     public void ejecInOrder(Arbol nArbol) {
-
+        funArc = new funciones_archivos();
         if (!nArbol.vacio()) {
             valRec = nArbol.InOrder();
             String rec = recorrido(valRec, "In order");
             System.out.println(rec);
-            //llama el metodo guardar archivo
             funArc.guardarArch("In_Order", rec, nArbol.getRaiz().getElemento());
 
         }
 
     }
 //metodo de ejecucion de preOrder
-    public void ejecPreOrder(Arbol nArbol) {
 
+    public void ejecPreOrder(Arbol nArbol) {
+        funArc = new funciones_archivos();
         if (!nArbol.vacio()) {
             valRec = nArbol.PreOrder();
             String rec = recorrido(valRec, "Pre order");
@@ -124,6 +125,7 @@ public class funciones_recorrido {
         }
     }
 //metodo de ejecucion de postOrder
+
     public void ejecPostOrder(Arbol nArbol) {
         funArc = new funciones_archivos();
         if (!nArbol.vacio()) {
