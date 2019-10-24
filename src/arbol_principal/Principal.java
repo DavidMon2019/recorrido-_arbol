@@ -16,6 +16,8 @@ public class Principal extends javax.swing.JFrame {
      */
     public Principal() {
         initComponents();
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -99,6 +101,9 @@ public class Principal extends javax.swing.JFrame {
 
     private void jBReccoridoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBReccoridoActionPerformed
         // TODO add your handling code here:
+        Recorrido rec = new Recorrido();
+        rec.setVisible(true);
+        dispose();
     }//GEN-LAST:event_jBReccoridoActionPerformed
 
     /**

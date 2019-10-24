@@ -5,6 +5,7 @@
  */
 package arbol_principal;
 
+import arbol_funciones.funciones_archivos;
 import arbol_funciones.funciones_recorrido;
 import arbol_modelo.Nodo;
 import arbol_modelo.Arbol;
@@ -25,13 +26,14 @@ public class Recorrido extends javax.swing.JFrame {
     /**
      * Creates new form Recorrido
      */
-    funciones_recorrido funRec;
-
-    Nodo nodo;
+    funciones_recorrido funRec;  
+   
     Arbol nArbol;
 
     public Recorrido() {
         initComponents();
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
     }
 
     public void cargar() {
@@ -749,6 +751,7 @@ public class Recorrido extends javax.swing.JFrame {
         nArbol = new Arbol();
         cargar();
         funRec.ejecInOrder(nArbol);
+        
     }//GEN-LAST:event_jB4ActionPerformed
 
     private void jB5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jB5ActionPerformed
@@ -756,7 +759,9 @@ public class Recorrido extends javax.swing.JFrame {
         funRec = new funciones_recorrido();
         nArbol = new Arbol();
         cargar();
+        
         funRec.ejecPostOrder(nArbol);
+        
     }//GEN-LAST:event_jB5ActionPerformed
 
     /**

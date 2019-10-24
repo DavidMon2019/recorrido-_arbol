@@ -6,9 +6,9 @@ import javax.swing.JTextField;
 
 public class funciones_recorrido {
 
-    
     ArrayList<Integer> valRec;
     ArrayList<Integer> coleccion;
+    funciones_archivos funArc;
 
     public funciones_recorrido() {
     }
@@ -37,6 +37,7 @@ public class funciones_recorrido {
         String r = msg + "\n";
         while (i < it.size()) {
             r += it.get(i) + ",";
+
             i++;
         }
         return (r);
@@ -51,7 +52,7 @@ public class funciones_recorrido {
             JTextField JT28, JTextField JT29, JTextField JT3, JTextField JT30,
             JTextField JT31, JTextField JT4, JTextField JT5, JTextField JT6,
             JTextField JT7, JTextField JT8, JTextField JT9) {
-      
+
         coleccion = new ArrayList<>();
         coleccion.add(valEntero(ValNull(JT1)));
         coleccion.add(valEntero(ValNull(JT2)));
@@ -115,12 +116,14 @@ public class funciones_recorrido {
     }
 
     public void ejecPostOrder(Arbol nArbol) {
+        funArc = new funciones_archivos();
         if (!nArbol.vacio()) {
             valRec = nArbol.PostOrder();
             String rec = recorrido(valRec, "Post order");
-            System.out.println(rec);
-
-        }else{
+            System.out.println(rec.replace("0", " "));
+            funArc.guardarArch("Post_Order", rec,nArbol.getRaiz().getElemento());
+            
+        } else {
             System.out.println("Arbol vacio");
         }
     }

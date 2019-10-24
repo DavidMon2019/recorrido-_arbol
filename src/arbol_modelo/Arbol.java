@@ -9,7 +9,7 @@ public class Arbol {
     public Arbol() {
         raiz = null;
     }
-
+    //agrega los valores de los nodos
     public boolean agregar(Integer dato) {
         Nodo nuevo = new Nodo(dato);
         ingresarNodo(nuevo, raiz);
@@ -54,7 +54,10 @@ public class Arbol {
         fun_preorder(raiz, val);
         return val;
     }
-
+    /*
+    -- carga la raiz al metodo principal y el Array para almacenar el recorrido
+    -- retorna el Array del recorrido
+    */
     public ArrayList<Integer> PostOrder() {
         ArrayList<Integer> val = new ArrayList<>();
         fun_postorder(raiz, val);
@@ -76,11 +79,14 @@ public class Arbol {
             fun_preorder(nodo.getDerecha(), rec);
         }
     }
+    //funcion principal Post Order
     public void fun_postorder(Nodo nodo, ArrayList<Integer> rec) {
         if (nodo != null) {
             fun_postorder(nodo.getIzquierda(), rec);
             fun_postorder(nodo.getDerecha(), rec);
             rec.add(nodo.getElemento());
+        }else{
+            rec.add(0);
         }
     }
 
