@@ -14,7 +14,7 @@ public class funciones_archivos {
             FileWriter escribir = new FileWriter(url + nameFile+".txt");
             PrintWriter texto = new PrintWriter(escribir);
             texto.println(
-                    "raiz: "+raiz +"\n"+
+                    "raiz:"+raiz +"\n"+
                     rec.replace("0"," ")
                     
             );
