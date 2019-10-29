@@ -1,0 +1,7 @@
+raiz:7
+Pre order
+7,5,4,6,11,10,12,
+
+Recorrido Final:
+Pre order
+7,5,4,6,11,10,12,
