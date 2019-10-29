@@ -1,7 +1,0 @@
-raiz:7
-Post order
- , ,4, , ,6,5, , ,10, , ,12,11,7,
-
-Recorrido Final:
-Post order
-4,6,5,10,12,11,7,
