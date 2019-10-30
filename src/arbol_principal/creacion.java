@@ -840,15 +840,13 @@ public static final String SEPARATOR=";";
                     JT30.setText(d30);
                     JT31.setText(d31);
               
-
                  }
                 }catch (Exception ex){
                     Logger.getLogger(creacion.class.getName()).log(Level.SEVERE, null, ex);
                     System.out.println(ex);
                 }
                 }else{
-                        
-                        System.out.println("Por favor seleccione un archivo de texto");
+                         System.out.println("Por favor seleccione un archivo de texto");
                  }
              }
         }
