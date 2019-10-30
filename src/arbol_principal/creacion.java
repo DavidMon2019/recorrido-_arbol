@@ -808,7 +808,6 @@ public static final String SEPARATOR=";";
                     String d30 = tokens.nextToken().trim();
                     String d31 = tokens.nextToken().trim();
             
-               
                     JT1.setText(d1);
                     JT2.setText(d2);
                     JT3.setText(d17);
@@ -933,6 +932,7 @@ public static final String SEPARATOR=";";
                     JT30.setText(d29);
                     JT31.setText(d31);
               
+                    
 
 }
                 }catch (Exception ex){
