@@ -764,7 +764,7 @@ public static final String SEPARATOR=";";
     }//GEN-LAST:event_JT27ActionPerformed
 
     private void PreOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreOrderActionPerformed
-         if(seleccionado.showDialog(null, "Seleccione archivo") == JFileChooser.APPROVE_OPTION){
+        if(seleccionado.showDialog(null, "Seleccione archivo") == JFileChooser.APPROVE_OPTION){
             archivo = seleccionado.getSelectedFile();
             if(archivo.canRead()){
                 if(archivo.getName().endsWith("txt")){
@@ -775,7 +775,6 @@ public static final String SEPARATOR=";";
                     BufferedReader leer = new BufferedReader (new FileReader (archivo));
                    while( (linea = leer.readLine()) != null ){
                        
-
                     StringTokenizer tokens = new StringTokenizer(linea,SEPARATOR);
                     String d1 = tokens.nextToken().trim();
                     String d2 = tokens.nextToken().trim();
@@ -809,6 +808,7 @@ public static final String SEPARATOR=";";
                     String d30 = tokens.nextToken().trim();
                     String d31 = tokens.nextToken().trim();
             
+               
                     JT1.setText(d1);
                     JT2.setText(d2);
                     JT3.setText(d17);
@@ -842,7 +842,7 @@ public static final String SEPARATOR=";";
                     JT31.setText(d31);
               
 
-}
+                 }
                 }catch (Exception ex){
                     Logger.getLogger(creacion.class.getName()).log(Level.SEVERE, null, ex);
                     System.out.println(ex);
@@ -850,9 +850,9 @@ public static final String SEPARATOR=";";
                 }else{
                         
                         System.out.println("Por favor seleccione un archivo de texto");
-                    }
-                }
-            }
+                 }
+             }
+        }
     }//GEN-LAST:event_PreOrderActionPerformed
 
     private void inOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inOrderActionPerformed
