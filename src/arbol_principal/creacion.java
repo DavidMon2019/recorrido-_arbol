@@ -32,7 +32,7 @@ import javax.swing.JTextField;
  */
 
 
-public class creacion extends javax.swing.JFrame {
+public class creacion extends javax.swing.JInternalFrame {
 public static final String SEPARATOR=";";
     /**
      * Creates new form Recorrido
@@ -62,7 +62,7 @@ public static final String SEPARATOR=";";
     public creacion() {
         initComponents();
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        this.setLocationRelativeTo(null);
+        this.setTitle("Creación de Árboles");
     }
     //ejecuta el metodo cargarArray de funciones de recorridos
    
@@ -112,8 +112,8 @@ public static final String SEPARATOR=";";
         inOrder = new javax.swing.JButton();
         PostOrder = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         JTPanel.setBackground(new java.awt.Color(255, 255, 255));
         JTPanel.setPreferredSize(new java.awt.Dimension(1400, 600));
@@ -626,7 +626,7 @@ public static final String SEPARATOR=";";
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(JTPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(162, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

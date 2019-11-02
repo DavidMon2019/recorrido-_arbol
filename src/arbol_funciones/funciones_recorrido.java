@@ -19,6 +19,7 @@ public class funciones_recorrido {
 
         if (text.getText().length() == 0) {
             text.setText("0");
+//            text.setVisible(false);
         } else {
 
             text.getText();
@@ -104,8 +105,12 @@ public class funciones_recorrido {
         funArc = new funciones_archivos();
         if (!nArbol.vacio()) {
             valRec = nArbol.InOrder();
+            for (int i = 0; i < (31 - valRec.size()); i++) {
+                valRec.add(-1);
+            }
             String rec = recorrido(valRec, "In order");
-            System.out.println(rec);
+            System.out.println(rec.replace("-1"," "));
+            
             funArc.guardarArch("In_Order", rec, nArbol.getRaiz().getElemento());
 
         }
@@ -117,8 +122,11 @@ public class funciones_recorrido {
         funArc = new funciones_archivos();
         if (!nArbol.vacio()) {
             valRec = nArbol.PreOrder();
+            for (int i = 0; i < (31 - valRec.size()); i++) {
+                valRec.add(-1);
+            }
             String rec = recorrido(valRec, "Pre order");
-            System.out.println(rec);
+            System.out.println(rec.replace("-1", " "));
             //llama el metodo guardar archivo
             funArc.guardarArch("Pre_Order", rec, nArbol.getRaiz().getElemento());
 
@@ -130,8 +138,12 @@ public class funciones_recorrido {
         funArc = new funciones_archivos();
         if (!nArbol.vacio()) {
             valRec = nArbol.PostOrder();
+
+            for (int i = 0; i < (31 - valRec.size()); i++) {
+                valRec.add(-1);
+            }
             String rec = recorrido(valRec, "Post order");
-            System.out.println(rec.replace("-1,", " "));
+            System.out.println(rec.replace("-1", " "));
             //llama el metodo guardar archivo
             funArc.guardarArch("Post_Order", rec, nArbol.getRaiz().getElemento());
 
